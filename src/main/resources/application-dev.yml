@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    password: 123000
+    url: jdbc:mysql://localhost:3306/t?useUnicode=true&characterEncoding=utf8&useSSL=false
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password: 123000

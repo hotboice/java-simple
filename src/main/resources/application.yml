@@ -1,0 +1,46 @@
+server:
+  port: 8093
+
+spring:
+  profiles:
+    active: dev
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+  datasource:
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      connection-test-query: select 1
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      pool-name: ChainHikariCP
+  redis:
+    pool:
+      min-idle: 8
+      max-idle: 500
+      max-active: 2000
+      max-wait: 1000
+      timeout: 0
+
+mybatis:
+  type-aliases-package: org.example.common.mapper
+  mapper-locations: classpath:mapper/*.xml
+  property:
+    order: BEFORE
+  configuration:
+    map-underscore-to-camel-case: true
+
+mapper:
+  mappers: org.example.common.config.MyMapper
+  not-empty: false
+  identity: MYSQL
+  order: after
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: false
+  support-methods-arguments: true
+  params: count=countSql
